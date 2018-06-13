@@ -55,6 +55,9 @@ app.delete('/shopping-list/:id', (req, res) => {
     res.status(204).end();
 });
 
+app.get('/recipes', (req, res) => {
+    res.json(Recipes.get());
+})
 
 // when new recipe added, ensure has required fields. if not,
 // log error and return 400 status code with hepful message.
@@ -74,9 +77,7 @@ app.post('/recipes', jsonParser, (req, res) => {
     res.status(201).json(item);
 });
 
-app.get('/recipes', (req, res) => {
-    res.json(Recipes.get());
-})
+
 
 app.delete('/recipes/:id', (req, res) => {
     Recipes.delete(req.params.id);
